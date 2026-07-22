@@ -23,7 +23,7 @@ const app: Application = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: env.nodeEnv === 'production' ? 'https://learnflow.ai' : 'http://localhost:5173',
+    origin: [env.frontendUrl, 'http://localhost:5173', 'https://learnflow.ai'],
     credentials: true,
   })
 );

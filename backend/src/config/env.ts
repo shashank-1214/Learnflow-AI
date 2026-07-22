@@ -11,6 +11,7 @@ interface EnvConfig {
   jwtSecret: string;
   jwtExpiresIn: string;
   geminiApiKey: string;
+  frontendUrl: string;
 }
 
 export const env: EnvConfig = {
@@ -20,6 +21,7 @@ export const env: EnvConfig = {
   jwtSecret: process.env.JWT_SECRET || 'fallback_secret',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '15m',
   geminiApiKey: process.env.GEMINI_API_KEY || '',
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
 };
 
 // Validate required environment variables
