@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 // Create base Axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5001/api/v1',
+  baseURL: 'https://learnflow-ai-2-ul2j.onrender.com',
 });
 
 // Request Interceptor: Attach JWT Token
