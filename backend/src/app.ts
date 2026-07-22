@@ -23,7 +23,19 @@ const app: Application = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: [env.frontendUrl, 'http://localhost:5173', 'https://learnflow.ai'],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (
+        origin === env.frontendUrl ||
+        origin === 'http://localhost:5173' ||
+        origin === 'https://learnflow.ai' ||
+        origin.endsWith('.vercel.app')
+      ) {
+        return callback(null, true);
+      }
+      return callback(new Error('CORS Policy Blocked'));
+    },
     credentials: true,
   })
 );
